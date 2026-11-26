@@ -7,7 +7,7 @@
 
 export const site = {
   name: "Light More Dark",
-  tagline: "A collective. Photo / Video / BMX / Cloth.",
+  tagline: "A collective",
   email: "hello@lightmoredark.com",
   socials: [
     { label: "Instagram", href: "https://instagram.com/" },
