@@ -1,11 +1,11 @@
 // Shown wherever a real image hasn't been added yet.
 const palettes = [
-  ["#111", "#f5e400"],
-  ["#ff3b1f", "#111"],
+  ["#111", "#00bf63"],
+  ["#dc1400", "#f2ecdf"],
   ["#f2ecdf", "#111"],
-  ["#2b4bff", "#f2ecdf"],
-  ["#111", "#ff3b1f"],
-  ["#f5e400", "#111"],
+  ["#004aad", "#f2ecdf"],
+  ["#111", "#dc1400"],
+  ["#00bf63", "#111"],
 ];
 
 export default function Placeholder({ label, seed = 0 }: { label: string; seed?: number }) {

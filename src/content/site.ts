@@ -15,10 +15,10 @@ export const site = {
     { label: "TikTok", href: "https://tiktok.com/" },
   ],
   ticker: [
-    "NEW DROP OUT NOW",
     "LIGHT MORE DARK",
+    "PHOTO / VIDEO / BMX / CLOTH",
     "SHOOT IT. RIDE IT. WEAR IT.",
-    "WORLDWIDE SHIPPING",
+    "FIRST DROP COMING SOON",
   ],
 };
 
@@ -91,6 +91,10 @@ export type Product = {
 
 export const currency = "$";
 
+// Flip to `true` when the first drop goes live. While false, products
+// show as "Coming soon" and can't be bought.
+export const shopOpen = false;
+
 export const products: Product[] = [
   {
     slug: "logo-tee-black",
@@ -100,8 +104,7 @@ export const products: Product[] = [
     colorway: "Black / Bone",
     sizes: ["S", "M", "L", "XL", "XXL"],
     description:
-      "Heavyweight 240gsm cotton tee. Puff-print sun/moon logo on chest, oversized back hit. Boxy fit.",
-    tag: "NEW",
+      "Heavyweight 240gsm cotton tee. Puff-print sprout emblem on chest, oversized back hit. Boxy fit.",
   },
   {
     slug: "after-dark-hoodie",

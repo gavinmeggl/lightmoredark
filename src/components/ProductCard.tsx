@@ -1,14 +1,19 @@
 import Link from "next/link";
 import Media from "./Media";
-import { currency, type Product } from "@/content/site";
+import { currency, shopOpen, type Product } from "@/content/site";
 
 export default function ProductCard({ p, seed = 0 }: { p: Product; seed?: number }) {
   return (
     <Link href={`/shop/${p.slug}`} className="product">
       <div className="product-img">
         <Media src={p.images[0]} alt={p.name} seed={seed} />
-        {p.tag && !p.soldOut && <span className="sticker">{p.tag}</span>}
-        {p.soldOut && <span className="sticker sold">SOLD OUT</span>}
+        {!shopOpen ? (
+          <span className="sticker">SOON</span>
+        ) : p.soldOut ? (
+          <span className="sticker sold">SOLD OUT</span>
+        ) : (
+          p.tag && <span className="sticker">{p.tag}</span>
+        )}
       </div>
       <div className="product-meta">
         <h3>{p.name}</h3>

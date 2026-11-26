@@ -1,25 +1,41 @@
-// Sun/moon split mark — half lit, half dark.
-export default function Logo({ size = 48 }: { size?: number }) {
+import Image from "next/image";
+
+// Chrome sprout emblem.
+export function Emblem({ size = 48, priority = false }: { size?: number; priority?: boolean }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden="true">
-      <g stroke="var(--ink)" strokeWidth="5" strokeLinecap="round">
-        {Array.from({ length: 8 }).map((_, i) => {
-          const a = (90 + i * (180 / 7)) * (Math.PI / 180);
-          return (
-            <line
-              key={i}
-              x1={50 + Math.cos(a) * 36}
-              y1={50 + Math.sin(a) * 36}
-              x2={50 + Math.cos(a) * 47}
-              y2={50 + Math.sin(a) * 47}
-            />
-          );
-        })}
-      </g>
-      <path d="M50 20 A30 30 0 0 0 50 80 Z" fill="var(--sun)" stroke="var(--ink)" strokeWidth="5" />
-      <path d="M50 20 A30 30 0 0 1 50 80 Z" fill="var(--ink)" stroke="var(--ink)" strokeWidth="5" />
-      <circle cx="62" cy="42" r="4" fill="var(--paper)" />
-      <circle cx="38" cy="42" r="4" fill="var(--ink)" />
-    </svg>
+    <Image
+      src="/brand/plant.png"
+      alt="Light More Dark emblem"
+      width={size}
+      height={Math.round(size * (904 / 1013))}
+      priority={priority}
+      className="emblem"
+    />
+  );
+}
+
+type Variant = "black" | "white" | "rgb";
+
+// "LIGHT MORE DARK" wordmark.
+export function Wordmark({
+  variant = "black",
+  width = 260,
+  priority = false,
+  className,
+}: {
+  variant?: Variant;
+  width?: number;
+  priority?: boolean;
+  className?: string;
+}) {
+  return (
+    <Image
+      src={`/brand/wordmark-${variant}.png`}
+      alt="Light More Dark"
+      width={width}
+      height={Math.round(width * (73 / 1296))}
+      priority={priority}
+      className={className}
+    />
   );
 }

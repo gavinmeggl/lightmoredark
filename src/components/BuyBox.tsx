@@ -1,14 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { currency, site, type Product } from "@/content/site";
+import { currency, shopOpen, site, type Product } from "@/content/site";
 
 export default function BuyBox({ p }: { p: Product }) {
   const [size, setSize] = useState(p.sizes.length === 1 ? p.sizes[0] : "");
   const link = (size && p.sizeLinks?.[size]) || p.buyLink;
 
   let cta: React.ReactNode;
-  if (p.soldOut) {
+  if (!shopOpen) {
+    cta = <span className="btn disabled">Coming soon</span>;
+  } else if (p.soldOut) {
     cta = <span className="btn disabled">Sold out</span>;
   } else if (!size) {
     cta = <span className="btn disabled">Pick a size</span>;
@@ -46,7 +48,7 @@ export default function BuyBox({ p }: { p: Product }) {
             aria-checked={size === s}
             className={size === s ? "on" : ""}
             onClick={() => setSize(s)}
-            disabled={p.soldOut}
+            disabled={!shopOpen || p.soldOut}
           >
             {s}
           </button>

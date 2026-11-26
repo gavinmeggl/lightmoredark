@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Logo from "./Logo";
+import { Emblem, Wordmark } from "./Logo";
 
 const nav = [
   { href: "/photo", label: "Photo" },
@@ -12,10 +12,8 @@ export default function Header() {
   return (
     <header className="header">
       <Link href="/" className="brand" aria-label="Light More Dark home">
-        <Logo size={44} />
-        <span className="brand-word">
-          LIGHT <em>MORE</em> DARK
-        </span>
+        <Emblem size={44} priority />
+        <Wordmark width={220} priority className="brand-word" />
       </Link>
       <nav className="nav">
         {nav.map((n) => (

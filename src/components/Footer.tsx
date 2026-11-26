@@ -1,5 +1,6 @@
+import Image from "next/image";
 import { site } from "@/content/site";
-import Logo from "./Logo";
+import { Emblem } from "./Logo";
 import Ticker from "./Ticker";
 
 export default function Footer() {
@@ -8,8 +9,13 @@ export default function Footer() {
       <Ticker invert />
       <div className="footer">
         <div className="footer-brand">
-          <Logo size={72} />
-          <p className="big">LIGHT MORE DARK</p>
+          <Image
+            src="/brand/stack-color.png"
+            alt="Light More Dark"
+            width={1479}
+            height={317}
+            className="footer-stack"
+          />
           <p>{site.tagline}</p>
         </div>
         <div className="footer-cols">
@@ -25,6 +31,9 @@ export default function Footer() {
             <h4>Contact</h4>
             <a href={`mailto:${site.email}`}>{site.email}</a>
             <span>Bookings / collabs / wholesale</span>
+          </div>
+          <div className="footer-emblem">
+            <Emblem size={96} />
           </div>
         </div>
         <p className="copyright">© {new Date().getFullYear()} Light More Dark. All rights reserved.</p>

@@ -1,12 +1,13 @@
+import Image from "next/image";
 import Link from "next/link";
-import Logo from "@/components/Logo";
+import { Emblem, Wordmark } from "@/components/Logo";
 import Ticker from "@/components/Ticker";
 import ProductCard from "@/components/ProductCard";
 import Media from "@/components/Media";
-import { photos, products, site } from "@/content/site";
+import { photos, products, shopOpen, site } from "@/content/site";
 
 const tiles = [
-  { href: "/photo", label: "PHOTO", note: "stills from the road", cls: "t-sun" },
+  { href: "/photo", label: "PHOTO", note: "stills from the road", cls: "t-green" },
   { href: "/video", label: "VIDEO", note: "films, parts, sessions", cls: "t-ink" },
   { href: "/bmx", label: "BMX", note: "the crew & the clips", cls: "t-red" },
   { href: "/shop", label: "SHOP", note: "cloth for the collective", cls: "t-blue" },
@@ -16,20 +17,17 @@ export default function Home() {
   return (
     <>
       <section className="hero">
-        <div className="hero-half light">
-          <span className="hero-word">LIGHT</span>
+        <div className="hero-emblem">
+          <Emblem size={420} priority />
         </div>
-        <div className="hero-half dark">
-          <span className="hero-word">DARK</span>
-        </div>
-        <div className="hero-center">
-          <div className="hero-logo">
-            <Logo size={220} />
-          </div>
-          <span className="hero-more">MORE</span>
-          <p className="hero-tag">{site.tagline}</p>
-          <Link href="/shop" className="btn">
-            Shop the drop →
+        <Wordmark variant="rgb" width={1100} priority className="hero-wordmark" />
+        <p className="hero-tag">{site.tagline}</p>
+        <div className="hero-ctas">
+          <Link href="/photo" className="btn">
+            See the work →
+          </Link>
+          <Link href="/shop" className="btn alt">
+            {shopOpen ? "Shop →" : "Shop — coming soon"}
           </Link>
         </div>
       </section>
@@ -45,10 +43,14 @@ export default function Home() {
         ))}
       </section>
 
+      <section className="fade-band" aria-label="Light More Dark">
+        <Image src="/brand/stack-fade.png" alt="" width={1479} height={670} className="fade-stack" />
+      </section>
+
       <section className="section">
         <div className="section-head">
-          <h2>Latest Drop</h2>
-          <Link href="/shop">All products →</Link>
+          <h2>{shopOpen ? "Shop" : "First Drop — Coming Soon"}</h2>
+          <Link href="/shop">{shopOpen ? "All products →" : "Preview →"}</Link>
         </div>
         <div className="grid products">
           {products.slice(0, 4).map((p, i) => (
